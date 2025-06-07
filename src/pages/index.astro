@@ -1,11 +1,35 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout>
-	<Welcome />
+  <div class="prose prose-li:marker:text-zinc-400 text-zinc-300">
+    <h1 class="text-xl">Hello world</h1>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis quasi rem nihil quidem
+      facere non rerum veniam optio deserunt. Earum cum, minima nihil eveniet ea quo recusandae
+      suscipit doloribus molestias. Magnam impedit fuga iste? Cum veritatis magni temporibus nisi
+      reiciendis est totam. Exercitationem non praesentium assumenda quod eius odio fuga?
+    </p>
+    <p class="mt-4">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis quasi rem nihil quidem
+      facere non rerum veniam optio deserunt. Earum cum, minima nihil eveniet ea quo recusandae
+      suscipit doloribus molestias. Magnam impedit fuga iste? Cum veritatis magni temporibus nisi
+      reiciendis est totam. Exercitationem non praesentium assumenda quod eius odio fuga?
+    </p>
+
+    <ul>
+      <li>item 1</li>
+      <li>item 2</li>
+      <li>item 3</li>
+      <li>item 4</li>
+    </ul>
+
+    <ol>
+      <li>numbered item 1</li>
+      <li>numbered item 2</li>
+      <li>numbered item 3</li>
+      <li>numbered item 4</li>
+    </ol>
+  </div>
 </Layout>
