@@ -5,9 +5,9 @@
 @font-face {
   font-family: Satoshi;
   src:
-    url("/public/fonts/Satoshi-Variable.woff2") format("woff2"),
-    url("/public/fonts/Satoshi-Variable.woff") format("woff"),
-    url("/public/fonts/Satoshi-Variable.ttf") format("ttf");
+    url("/fonts/Satoshi-Variable.woff2") format("woff2"),
+    url("/fonts/Satoshi-Variable.woff") format("woff"),
+    url("/fonts/Satoshi-Variable.ttf") format("ttf");
   font-weight: 200 700;
   font-style: normal;
   font-display: swap;
@@ -16,8 +16,8 @@
 @font-face {
   font-family: Inter;
   src:
-    url("/public/fonts/InterVariable.woff2") format("woff2"),
-    url("/public/fonts/InterVariable.ttf") format("ttf");
+    url("/fonts/InterVariable.woff2") format("woff2"),
+    url("/fonts/InterVariable.ttf") format("ttf");
   font-weight: 200 700;
   font-style: normal;
   font-display: swap;
