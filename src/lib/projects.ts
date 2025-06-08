@@ -10,14 +10,14 @@ const projects: Project[] = [
     name: "Domain Manager",
     description:
       "A domain management app that tracks registration and expiry dates, DNS records, and SSL certificate details",
-    tech: ["React", "TanStack Router", "SWR", "Express", "Tailwind"],
+    tech: ["React", "TanStack Router", "SWR", "Express", "TailwindCSS"],
     link: "https://github.com/mohammedyh/domain-manager",
   },
   {
     name: "Portfolio v2",
     description:
-      "The second iteration of my personal website built with Next.js, Tailwind and TypeScript",
-    tech: ["Next 15", "TypeScript", "Tailwind", "Velite"],
+      "The second iteration of my personal website built with Next.js, TailwindCSS and TypeScript",
+    tech: ["Next 15", "TypeScript", "TailwindCSS", "Velite"],
     link: "https://v2.mohammedyh.dev",
   },
   {
@@ -40,10 +40,10 @@ const projects: Project[] = [
     link: "https://github.com/mohammedyh/shopify-dev-clone",
   },
   {
-    name: "Tailwind Agency Website",
+    name: "TailwindCSS Agency Website",
     description: "A minimal and responsive agency landing page website",
-    tech: ["HTML", "Tailwind", "JavaScript"],
-    link: "https://github.com/mohammedyh/tailwind-agency-site",
+    tech: ["HTML", "TailwindCSS", "JavaScript"],
+    link: "https://github.com/mohammedyh/tailwindCSS-agency-site",
   },
 ];
 
