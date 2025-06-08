@@ -3,15 +3,16 @@ import projects from "@/lib/projects";
 
 interface Props {
   limit?: number;
+  displaySectionTitle?: boolean;
   displaySeeAllLink?: boolean;
 }
 
-const { limit = 0, displaySeeAllLink = false } = Astro.props;
+const { limit = 0, displaySeeAllLink = false, displaySectionTitle = false } = Astro.props;
 ---
 
-<section class="my-20 text-zinc-300">
+<section class="text-zinc-300">
   <div class="flex items-center justify-between">
-    <h4 class="font-medium">Projects</h4>
+    {displaySectionTitle && <h4 class="font-medium">Projects</h4>}
     {
       displaySeeAllLink && (
         <a
@@ -40,9 +41,9 @@ const { limit = 0, displaySeeAllLink = false } = Astro.props;
             <p class="mt-2 text-sm leading-relaxed text-zinc-400 transition-colors group-hover:text-zinc-300">
               {project.description}
             </p>
-            <div class="mt-2.5 text-sm leading-relaxed text-zinc-400 transition-colors group-hover:text-zinc-300">
-              {project.tech.map(tech => (
-                <span class="bg-zinc-700/60 mr-2 px-1.5 py-1 rounded-sm">{tech}</span>
+            <div class="flex flex-wrap gap-2.5 mt-2.5 text-sm leading-relaxed text-zinc-400 transition-colors group-hover:text-zinc-300">
+              {project.tech.map((tech) => (
+                <span class="rounded-sm bg-zinc-700/60 px-1.5 py-1">{tech}</span>
               ))}
             </div>
           </a>
