@@ -1,0 +1,271 @@
+---
+title: Useful Git Commands
+description: Useful Git commands and flags I've discovered. Some I use frequently and others are nice to know.
+date: 2024-07-02
+---
+
+import { Picture } from "astro:assets";
+import allUntrackedFiles from "@/assets/blog/useful-git-commands/all-untracked-files.png";
+import untrackedParentFolder from "@/assets/blog/useful-git-commands/untracked-parent-folder.png";
+
+This post contains some useful Git commands I've discovered. Some I use frequently and others are nice to know.
+
+## Change Message on Last Commit
+
+Sometimes we realise that we could have worded a commit message better or included more details in it. This is how to change / amend a commit message before and after a `git push`. (There's a small difference between the two)
+
+### Amending Before a Push
+
+```bash
+git commit --amend
+git push
+```
+
+### Amending After a Push
+
+```bash
+# if you need to add a change as part of a previous commit
+# you can also run a `git add` before the `git commit`.
+git add .
+git commit --amend
+git push --force
+# or
+git push --force-with-lease
+```
+
+> If you want to add a change to a previous commit but don't need to update the commit message, you can use the `--no-edit` flag on `git commit`
+
+The key difference between `git push --force` and `git push --force-with-lease` is that `--force-with-lease` provides a safety check to prevent overwriting remote commits that you don't have locally.
+
+`git push --force` will unconditionally overwrite the remote branch with your local branch, even if the remote branch has commits that you don't have locally. This can lead to data loss if someone else has pushed commits to the remote branch that you haven't pulled down.
+
+Although optional, it's a good practice to include the branch branch name as part of the `--force-with-lease` flag, like so:
+
+```bash
+git push --force-with-lease=branchName
+```
+
+## Clearer Git Diff Output
+
+```bash
+# see changes on unstaged files
+`git diff --word-diff`
+# see changes on staged files
+`git diff --staged --word-diff`
+```
+
+The `git diff --word-diff` and `git diff --staged --word-diff` commands makes the specific word changes in a file more apparent and readable. This comes in handy to see what's changed in files that have been reformatted for instance. Reformatting could include indentation being adjusted (converting tabs to spaces as an example). In a normal `git diff` it would be difficult to see what's been changed. Adding the `--word-diff` flag shows changes on a word-by-word basis, rather than the default line-by-line basis.
+
+Normal `git diff`:
+
+```diff
+- The quick brown fox jumped over the lazy dog.
++ The fast brown fox leaped over the sleepy dog.
+```
+
+With `--word-diff`:
+
+```diff
+The [-quick-]{+fast+} brown fox [-jumped-]{+leaped+} over the [-lazy-]{+sleepy+} dog.
+```
+
+## Squashing and Renaming Commits
+
+To rename a commit message in the Git history, we can use `git rebase`
+
+```bash
+# --root gets all "reachable" commits
+git rebase -i --root
+# In the editor, replace the word "pick" with "reword"
+# or "r" on the specific commits you want to reword
+
+# An editor will open per commit you want to reword
+# Once all commits have been reworded they'll have to
+# be forced pushed since we're rewriting the git history
+git push --force-with-lease
+```
+
+We can also use `git rebase` to squash multiple commits into one.
+
+```bash
+# 3 is the number of commits that you wish to rebase.
+# HEAD~3 will get the last 3 commits
+git rebase -i HEAD~3
+# In the editor, replace the word "pick" with "squash"
+# or "s" on the specific commits you want to squash
+
+# An editor will open asking for the squash commit message
+# After, an editor will open again, this time showing all
+# combined commit messages from the commits to be squashed.
+# Finally, we will need to force push for the rebase to take effect.
+git push --force-with-lease
+```
+
+If we don't want the combined commit messages we can use _"fixup"_ instead of _"squash"_ during the interactive rebase.
+
+Squash
+
+- Combines the commit being squashed with the previous commit
+- Prompts you to edit the combined commit message, allowing you to merge the messages from both commits
+
+Fixup
+
+- Also combines the commit with the previous commit
+- However, it discards the commit message of the commit being fixup'd, keeping only the message from the previous commit
+
+## Restoring Unstaged and Staged Files
+
+The `git restore` command allows you to undo changes. It provides a convenient way to discard unwanted modifications, whether they are in your working directory or in the staging area / index.
+
+To discard unstaged changes in your working directory, you can use the following command:
+
+```bash
+git restore <file>
+```
+
+Replace `<file>` with the path to the file(s) you want to restore to their previous state. This will revert the specified file(s) to the version stored in the repository, effectively undoing any local changes made.
+
+To discard staged changes, use this command:
+
+```bash
+git restore --staged <file>
+```
+
+You can use a period / dot to restore all modified files in the current directory, or a portion of the path to restore all modified files within that directory rather than specifying the file paths one by one.
+
+```bash
+git restore .
+git restore src/
+git restore src/components
+```
+
+> It's common to have an alias like "grs" and "grst" setup for `git restore`. Simply add `alias grs="git restore"` and `alias grst="git restore --staged"` to your shell config file (.zshrc, .bashrc etc).
+
+## Reverting a Commit
+
+The `git revert` command adds a "revert commit" to the Git history, and reverses the changes in the provided commit.
+
+```bash
+git revert <commit-sha>
+```
+
+The default commit message looks like this:
+
+```
+Revert "commit message from provided commit SHA"
+
+This reverts commit <commit-sha>
+```
+
+### Reverting a Merge Commit
+
+```bash
+git revert -m 1 <merge-commit-sha>
+```
+
+- The `-m 1` option tells Git that we want to keep the parent side of the merge (which is the branch we had merged _into_ - i.e feat/branch into main).
+- Finally, we provide the correct merge commit SHA / hash, which can be obtained using the `git log` or `git reflog` commands.
+
+## Listing All Untracked Files
+
+When you've created a new directory, and inside that directory there are multiple files and other directories, running `git status` will only show the name of the outermost folder with a trailing slash.
+
+<Picture
+  src={untrackedParentFolder}
+  formats={["avif", "webp"]}
+  alt="Terminal output showing the default result of the `git status` command, which groups untracked files by directory."
+  layout="constrained"
+/>
+
+```bash
+git status --untracked-files
+```
+
+This command will list all untracked files, as opposed to just showing the parent directory.
+
+<Picture
+  src={allUntrackedFiles}
+  formats={["avif", "webp"]}
+  alt="Terminal output showing the result of the `git status --untracked-files` command, which displays a detailed list of all untracked files."
+  layout="constrained"
+/>
+
+## Change Commit Author
+
+This can be useful if you use a single GitHub account which is attached to multiple organisations, and you wish to use different email addresses for repositories belonging to each organisation.
+
+You can do this by using `git config` and modifying the Git config options / variables per project.
+
+```bash
+git config user.email "email@domain.com"
+```
+
+If you wish to modify commits from the past you can use the below, however, this is nothing to take lightly: you will create new commit objects in this process, which can become a serious problem for your collaborators - because they might have already based new work on some of the original commits.
+
+```bash
+git rebase -i <HEAD@n | commit-sha>
+# mark relevant commits with "edit" keyword
+git commit --amend --author="Name <email@example.com>" --no-edit
+# go to next commit
+git rebase --continue
+```
+
+## Reducing `.git` Folder Size
+
+For small projects you won't see a need to shrink the size of the `.git` folder. However, there _are_ cases where the `.git` folder is enormous in size. I've seen a `.git` folder upward of 6GB!
+
+There are things we can do to reduce this.
+
+```bash
+git repack -a -d -f --depth=250 --window=250
+```
+
+> where that depth thing is just about how deep the delta chains can be (make them longer for old history - it's worth the space overhead), and the window thing is about how big an object window we want each delta candidate to scan. - Linus
+
+The above comes from Linus Torvalds (the creator of Git) from [this email](https://gcc.gnu.org/legacy-ml/gcc/2007-12/msg00165.html).
+
+It's recommended to run the above command overnight as it _can_ take a long time to process.
+
+The following commands can also be helpful in reducing the `.git` folder size.
+
+```bash
+# prune all unreachable objects from the object database
+git prune
+# remove extra objects that are already in pack files
+git prune-packed
+```
+
+## Undoing a Merge
+
+You can use the git reset command to return to the revision before the merge, effectively undoing it.
+
+```bash
+git reset --hard <commit-sha-before-merge>
+```
+
+If you don't have the commit hash and the merge was the most recent operation, you can also use the following command:
+
+```bash
+git reset --hard HEAD~1
+```
+
+This command can be useful if you've just completed a merge and realize that it was a mistake. By typing "HEAD~1", you're telling Git to go back to the commit before the current HEAD revision — which should be the commit before the merge!
+
+The `--hard` option means any local changes in your working copy will be discarded.
+
+If you have important uncommitted changes you wish to keep, you can use `git stash` to stash those changes. or use the `--merge` flag with `git reset` to reset the current branch to the state of the last commit while **preserving** any uncommitted changes that have not been staged.
+
+> To reapply the stashed changes, use `git stash pop`
+
+## Cleaning Untracked Files
+
+```bash
+git clean
+git clean -xf
+```
+
+`git clean` cleans the working tree by recursively removing files that are not under version control, starting from the current directory.
+
+Normally, only files unknown to Git are removed, but if the `-x` option is used, ignored files are also removed; like `.env` files for example. This can be useful to remove all build products for instance.
+
+> The `-n` flag doesn't actually remove anything, but show what would be removed.
