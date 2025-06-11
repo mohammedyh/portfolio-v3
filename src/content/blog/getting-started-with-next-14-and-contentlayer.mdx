@@ -61,7 +61,7 @@ npm install contentlayer next-contentlayer
 
 Inside of the `next.config.js` file, add the following code:
 
-```ts title="next.config.js" showLineNumbers
+```ts title="next.config.js"
 const { withContentlayer } = require("next-contentlayer");
 
 /** @type {import('next').NextConfig} */
@@ -83,7 +83,7 @@ Add the `.contentlayer` directory into your `.gitignore` file to ensure each bui
 
 If you setup your Next.js app with TypeScript, add the following options to your `tsconfig.json`.
 
-```json title="tsconfig.json" showLineNumbers {3,5,13}
+```json title="tsconfig.json" {3,5,13}
 {
   "compilerOptions": {
     "baseUrl": ".",
@@ -105,7 +105,7 @@ If you setup your Next.js app with TypeScript, add the following options to your
 
 Create a `contentlayer.config.js` file in the project's root. This defines the structure of your content. Here is the configuration I use:
 
-```ts title="contentlayer.config.js" showLineNumbers
+```ts title="contentlayer.config.js"
 import { defineDocumentType, makeSource } from "contentlayer/source-files";
 
 export const Post = defineDocumentType(() => ({
@@ -149,7 +149,7 @@ Now the fun part, create some posts! Make sure they are located under the `posts
 
 Now that we have Contentlayer configured and some MDX posts created, we can focus on pulling the posts into our Next.js pages. The below code pulls the MDX posts onto the home page.
 
-```ts title="app/page.tsx" showLineNumbers
+```ts title="app/page.tsx"
 import Link from 'next/link'
 import { allPosts } from 'contentlayer/generated'
 
@@ -190,7 +190,7 @@ export default function Home() {
 
 When looping over `allPosts`, the type of each post is inferred as `Post` and you get nice autocomplete suggestions based on the fields specified in the `contentlayer.config.js` file! If you prefer, you can import the `Post` type from `contentlayer/generated` to declare the type explicitly. (For TypeScript projects)
 
-```ts showLineNumbers
+```ts
 import { allPosts, type Post } from 'contentlayer/generated'
 
 allPosts.map((post: Post) => ...)
@@ -210,7 +210,7 @@ Now, when you visit `http://localhost:3000`, you should see a post feed on the h
 
 Currently, when clicking on a post, we get a 404. Let's make a dynamic page in Next.js at `app/blog/[slug]/page.tsx` and use the code below.
 
-```ts title="app/posts/[slug]/page.tsx" showLineNumbers
+```ts title="app/posts/[slug]/page.tsx"
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
