@@ -2,28 +2,7 @@
 
 @plugin "@tailwindcss/typography";
 
-@font-face {
-  font-family: Satoshi;
-  src:
-    url("/fonts/Satoshi-Variable.woff2") format("woff2"),
-    url("/fonts/Satoshi-Variable.woff") format("woff"),
-    url("/fonts/Satoshi-Variable.ttf") format("ttf");
-  font-weight: 200 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: Inter;
-  src:
-    url("/fonts/InterVariable.woff2") format("woff2"),
-    url("/fonts/InterVariable.ttf") format("ttf");
-  font-weight: 200 700;
-  font-style: normal;
-  font-display: swap;
-}
-
 @theme {
-  --font-display: Satoshi, Inter, var(--font-sans);
-  --font-body: Inter, var(--font-sans);
+  --font-display: var(--font-satoshi), Inter, var(--font-sans);
+  --font-body: var(--font-inter), var(--font-sans);
 }
