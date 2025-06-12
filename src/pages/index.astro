@@ -1,4 +1,5 @@
 ---
+import Link from "@/components/Link.astro";
 import ProjectsList from "@/components/ProjectsList.astro";
 import Layout from "@/layouts/Layout.astro";
 ---
@@ -9,26 +10,24 @@ import Layout from "@/layouts/Layout.astro";
   >
     <p>
       I'm an experienced Web Developer currently working for an award winning software development
-      agency, I'm involved in the development of custom
-      <a class="font-medium" href="https://wordpress.org" rel="noopener">WordPress</a>
-      themes and <a class="font-medium" href="https://laravel.com" rel="noopener">Laravel</a>
-      systems using
-      <a class="font-medium" href="https://filamentphp.com" rel="noopener">Filament</a>. I leverage
-      my expertise in JavaScript using technologies like
-      <a class="font-medium" href="https://react.dev" rel="noopener">React</a>
-      and <a class="font-medium" href="https://nextjs.org" rel="noopener">Next.js</a> in my personal
-      projects. Recently I've also been playing around with
-      <a class="font-medium" href="https://go.dev" rel="noopener">Go</a>.
+      agency, involved in the development of custom
+      <Link href="https://wordpress.org">WordPress</Link>
+      themes and <Link href="https://laravel.com">Laravel</Link>
+      systems using <Link href="https://filamentphp.com">Filament</Link>. I leverage my expertise in
+      JavaScript using technologies like <Link href="https://react.dev">React</Link>
+      and <Link href="https://nextjs.org">Next.js</Link> in my personal projects. Recently I've also
+      been playing around with <Link href="https://go.dev">Go</Link>.
     </p>
+
     <p>
       Outside of my professional role, I enjoy exploring new programming languages, tools, and
-      emerging tech. Take a look at my <a class="font-medium" href="/projects">projects</a> and contributions
-      on <a class="font-medium" href="https://github.com/mohammedyh" rel="noopener">GitHub</a>.
+      emerging tech. Take a look at my <Link href="/projects" openInNewTab={false}>projects</Link> and
+      contributions on <Link href="https://github.com/mohammedyh">GitHub</Link>.
     </p>
     <p>
-      Aside from my passion for web and software, I go to the gym, watch combat sports - especially
-      Boxing and MMA. I disconnect from the digital world by going on walks and reading books.
-      Currently, I'm reading Deep Work by Cal Newport.
+      Aside from my passion for web and software development, I go to the gym and watch combat
+      sports, especially boxing and MMA. I disconnect by taking walks and reading books. Currently,
+      I'm reading "Deep Work" by Cal Newport.
     </p>
     <p class="mt-3">🧩 Interesting fact: I can solve the 3x3 Rubiks Cube in under 25 seconds.</p>
   </div>
