@@ -1,8 +1,13 @@
 ---
 import ProjectsList from "@/components/ProjectsList.astro";
 import Layout from "@/layouts/Layout.astro";
+import type { Metadata } from "@/lib/shared-metadata";
+
+const metadata: Metadata = {
+  title: "Projects - Mohammed-Yousuf Hamid",
+};
 ---
 
-<Layout title="Projects">
+<Layout title="Projects" {metadata}>
   <ProjectsList />
 </Layout>

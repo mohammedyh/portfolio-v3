@@ -1,12 +1,17 @@
 ---
 import Layout from "@/layouts/Layout.astro";
+import type { Metadata } from "@/lib/shared-metadata";
 import { getCollection } from "astro:content";
 
 const posts = await getCollection("blog");
 posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+const metadata: Metadata = {
+  title: "Blog - Mohammed-Yousuf Hamid",
+};
 ---
 
-<Layout title="Blog">
+<Layout title="Blog" {metadata}>
   <section class="text-zinc-300">
     <ul class="mt-4 [&>li:first-child_div]:rounded-t-lg [&>li:last-child_div]:rounded-b-lg">
       {
