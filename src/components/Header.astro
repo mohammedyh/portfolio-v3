@@ -1,5 +1,6 @@
 ---
 import { Image } from "astro:assets";
+import headerIcon from '@/assets/header-icon.png'
 
 const navigationLinks = [
   {
@@ -21,10 +22,11 @@ const navigationLinks = [
   <div>
     <a href="/">
       <Image
-        src="https://mohammedyh.dev/favicon.ico"
+        src={headerIcon}
         alt="icon"
         width={30}
         height={30}
+        layout="fixed"
         loading="eager"
       /></a
     >
