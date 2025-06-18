@@ -1,0 +1,44 @@
+on:
+  - push
+  - pull_request
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v4
+
+      - name: "Setup Node and pnpm"
+        uses: "./.github/node-pnpm-setup"
+
+      - name: "Install dependencies"
+        run: pnpm install
+
+      - name: "Lint"
+        run: pnpm lint
+
+  format:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v4
+
+      - name: "Setup Node and pnpm"
+        uses: "./.github/node-pnpm-setup"
+
+      - name: "Install dependencies"
+        run: pnpm install
+
+      - name: "Format"
+        run: pnpm format:write
+
+      - name: "Commit formatting changes"
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "style(ci): fix formatting"
