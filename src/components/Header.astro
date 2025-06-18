@@ -1,6 +1,6 @@
 ---
+import headerIcon from "@/assets/header-icon.png";
 import { Image } from "astro:assets";
-import headerIcon from '@/assets/header-icon.png'
 
 const navigationLinks = [
   {
@@ -21,15 +21,8 @@ const navigationLinks = [
 <header class="flex items-center justify-between py-5 text-zinc-300">
   <div>
     <a href="/">
-      <Image
-        src={headerIcon}
-        alt="icon"
-        width={30}
-        height={30}
-        layout="fixed"
-        loading="eager"
-      /></a
-    >
+      <Image src={headerIcon} alt="icon" width={30} height={30} layout="fixed" loading="eager" />
+    </a>
   </div>
   <nav>
     {
