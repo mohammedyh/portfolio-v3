@@ -18,7 +18,6 @@ export default defineConfig({
     mdx(),
   ],
   experimental: {
-    responsiveImages: true,
     fonts: [
       {
         provider: "local",
