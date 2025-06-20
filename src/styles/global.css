@@ -3,6 +3,6 @@
 @plugin "@tailwindcss/typography";
 
 @theme {
-  --font-display: var(--font-satoshi), Inter, var(--font-sans);
+  --font-display: var(--font-satoshi), var(--font-inter), var(--font-sans);
   --font-body: var(--font-inter), var(--font-sans);
 }
