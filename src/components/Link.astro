@@ -10,8 +10,8 @@ const { href, external, ...attributes } = Astro.props;
 ---
 
 <a
-  class="font-medium"
   href={href}
   {...external && { rel: "noopener noreferrer", target: "_blank" }}
-  {...attributes}><slot /></a
+  {...attributes}
+  class="font-medium"><slot /></a
 >
