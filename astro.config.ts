@@ -1,4 +1,5 @@
 import mdx from "@astrojs/mdx";
+import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
 import expressiveCode from "astro-expressive-code";
 import { defineConfig } from "astro/config";
@@ -8,15 +9,12 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
-  integrations: [
-    expressiveCode({
-      themes: ["tokyo-night"],
-      defaultProps: {
-        wrap: true,
-      },
-    }),
-    mdx(),
-  ],
+  integrations: [expressiveCode({
+    themes: ["tokyo-night"],
+    defaultProps: {
+      wrap: true,
+    },
+  }), mdx(), sitemap()],
   experimental: {
     fonts: [
       {
