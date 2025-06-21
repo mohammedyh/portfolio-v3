@@ -17,7 +17,7 @@ const projects: Project[] = [
     name: "Portfolio v2",
     description:
       "The second iteration of my personal website built with Next.js, TailwindCSS and TypeScript",
-    tech: ["Next 15", "TypeScript", "TailwindCSS", "Velite"],
+    tech: ["Next.js", "TypeScript", "TailwindCSS", "Velite"],
     link: "https://v2.mohammedyh.dev",
   },
   {
