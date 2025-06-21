@@ -15,6 +15,9 @@ export default defineConfig({
       defaultProps: {
         wrap: true,
       },
+      styleOverrides: {
+        codeFontFamily: "var(--default-mono-font-family)",
+      },
     }),
     mdx(),
     sitemap(),
@@ -43,6 +46,27 @@ export default defineConfig({
               "./src/assets/fonts/Satoshi-Variable.woff2",
               "./src/assets/fonts/Satoshi-Variable.woff",
               "./src/assets/fonts/Satoshi-Variable.ttf",
+            ],
+          },
+        ],
+      },
+      {
+        provider: "local",
+        name: "IBM Plex Mono",
+        cssVariable: "--font-plex-mono",
+        variants: [
+          {
+            style: "normal",
+            src: [
+              "./src/assets/fonts/IBMPlexMono-Regular.woff2",
+              "./src/assets/fonts/IBMPlexMono-Regular.woff",
+            ],
+          },
+          {
+            style: "italic",
+            src: [
+              "./src/assets/fonts/IBMPlexMono-Italic.woff2",
+              "./src/assets/fonts/IBMPlexMono-Italic.woff",
             ],
           },
         ],
