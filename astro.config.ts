@@ -9,12 +9,16 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
-  integrations: [expressiveCode({
-    themes: ["tokyo-night"],
-    defaultProps: {
-      wrap: true,
-    },
-  }), mdx(), sitemap()],
+  integrations: [
+    expressiveCode({
+      themes: ["tokyo-night"],
+      defaultProps: {
+        wrap: true,
+      },
+    }),
+    mdx(),
+    sitemap(),
+  ],
   experimental: {
     fonts: [
       {
