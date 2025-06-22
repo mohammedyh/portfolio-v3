@@ -1,17 +1,19 @@
-import type { GetStaticPaths } from "astro";
-import { site } from "astro:config/server";
-import { getCollection, type CollectionEntry } from "astro:content";
+import type { APIRoute, GetStaticPaths } from "astro";
+import { getCollection } from "astro:content";
 import fs from "node:fs/promises";
 import path from "node:path";
 import satori from "satori";
 import sharp from "sharp";
 
-interface Props {
-  params: { slug: string };
-  props: { post: CollectionEntry<"blog"> };
-}
+export const getStaticPaths = (async () => {
+  const posts = await getCollection("blog");
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}) satisfies GetStaticPaths;
 
-export const GET = async ({ props }: Props) => {
+export const GET: APIRoute = async ({ props, site }) => {
   const { post } = props;
   const satoshiFont = await fs.readFile(path.resolve("./src/assets/fonts/Satoshi-Bold.woff"));
 
@@ -26,7 +28,7 @@ export const GET = async ({ props }: Props) => {
           flexDirection: "column",
           alignItems: "flex-start",
           justifyContent: "center",
-          backgroundImage: `url(${site}/og-template.jpg)`,
+          backgroundImage: `url(${site}og-template.jpg)`,
         },
         children: [
           {
@@ -66,11 +68,3 @@ export const GET = async ({ props }: Props) => {
     headers: { "Content-Type": "image/jpg" },
   });
 };
-
-export const getStaticPaths = (async () => {
-  const posts = await getCollection("blog");
-  return posts.map((post) => ({
-    params: { slug: post.id },
-    props: { post },
-  }));
-}) satisfies GetStaticPaths;
