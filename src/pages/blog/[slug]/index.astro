@@ -23,7 +23,7 @@ const metadata: Metadata = {
   description: post.data.description,
   og: {
     image: `blog/${post.id}/og.jpg`,
-    alt: "",
+    alt: post.data.description,
   },
 };
 ---
