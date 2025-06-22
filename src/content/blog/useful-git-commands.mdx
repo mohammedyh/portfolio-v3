@@ -49,9 +49,9 @@ git push --force-with-lease=branchName
 
 ```bash
 # see changes on unstaged files
-`git diff --word-diff`
+git diff --word-diff
 # see changes on staged files
-`git diff --staged --word-diff`
+git diff --staged --word-diff
 ```
 
 The `git diff --word-diff` and `git diff --staged --word-diff` commands makes the specific word changes in a file more apparent and readable. This comes in handy to see what's changed in files that have been reformatted for instance. Reformatting could include indentation being adjusted (converting tabs to spaces as an example). In a normal `git diff` it would be difficult to see what's been changed. Adding the `--word-diff` flag shows changes on a word-by-word basis, rather than the default line-by-line basis.
