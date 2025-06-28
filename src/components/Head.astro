@@ -1,10 +1,11 @@
 ---
 import type { Metadata } from "@/lib/shared-metadata";
-import { site } from "astro:config/server";
 
 type Props = Metadata;
 
+const { site } = Astro;
 const { title, description, og } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, site);
 ---
 
 <meta charset="utf-8" />
@@ -31,6 +32,7 @@ const { title, description, og } = Astro.props;
 <meta name="twitter:image:width" content=`${og?.width}` />
 <meta name="twitter:image:height" content=`${og?.height}` />
 
+<link rel="canonical" href={canonicalURL} />
 <link
   rel="icon"
   type="image/svg+xml"
