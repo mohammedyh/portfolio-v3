@@ -33,9 +33,9 @@ const { limit = 0, displaySeeAllLink = false, displaySectionTitle = false } = As
       posts.slice(0, limit || undefined).map((post) => (
         <li class="group relative">
           <a href={`/blog/${post.id}`} class="block border-b border-zinc-800 py-4 pr-8">
-            <h5 class="font-medium transition-colors duration-300 ease-in-out group-hover:text-white">
+            <h3 class="font-medium transition-colors duration-300 ease-in-out group-hover:text-white">
               {post.data.title}
-            </h5>
+            </h3>
             <time
               class="mt-2.5 inline-block text-sm text-zinc-400/80"
               datetime={post.data.date.toISOString()}
