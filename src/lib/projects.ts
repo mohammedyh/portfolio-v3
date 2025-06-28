@@ -14,13 +14,6 @@ const projects: Project[] = [
     link: "https://github.com/mohammedyh/domain-manager",
   },
   {
-    name: "Portfolio v2",
-    description:
-      "The second iteration of my personal website built with Next.js, TailwindCSS and TypeScript",
-    tech: ["Next.js", "TypeScript", "TailwindCSS", "Velite"],
-    link: "https://v2.mohammedyh.dev",
-  },
-  {
     name: "npr - node script runner",
     description:
       "A CLI tool that lets you browse and run local project scripts using npm, pnpm, yarn, bun or deno",
@@ -43,7 +36,7 @@ const projects: Project[] = [
     name: "TailwindCSS Agency Website",
     description: "A minimal and responsive agency landing page website",
     tech: ["HTML", "TailwindCSS", "JavaScript"],
-    link: "https://github.com/mohammedyh/tailwindCSS-agency-site",
+    link: "https://github.com/mohammedyh/tailwind-agency-site",
   },
 ];
 
