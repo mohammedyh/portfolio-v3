@@ -30,7 +30,7 @@ export default defineConfig({
         cssVariable: "--font-inter",
         variants: [
           {
-            display: 'swap',
+            display: "swap",
             style: "normal",
             src: ["./src/assets/fonts/InterVariable.woff2", "./src/assets/fonts/InterVariable.ttf"],
           },
@@ -42,7 +42,7 @@ export default defineConfig({
         cssVariable: "--font-satoshi",
         variants: [
           {
-            display: 'swap',
+            display: "swap",
             style: "normal",
             src: [
               "./src/assets/fonts/Satoshi-Variable.woff2",
@@ -58,7 +58,7 @@ export default defineConfig({
         cssVariable: "--font-plex-mono",
         variants: [
           {
-            display: 'swap',
+            display: "swap",
             style: "normal",
             src: [
               "./src/assets/fonts/IBMPlexMono-Regular.woff2",
@@ -66,7 +66,7 @@ export default defineConfig({
             ],
           },
           {
-            display: 'swap',
+            display: "swap",
             style: "italic",
             src: [
               "./src/assets/fonts/IBMPlexMono-Italic.woff2",
