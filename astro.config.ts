@@ -32,7 +32,7 @@ export default defineConfig({
           {
             display: "swap",
             style: "normal",
-            src: ["./src/assets/fonts/InterVariable.woff2", "./src/assets/fonts/InterVariable.ttf"],
+            src: ["./src/assets/fonts/InterVariable.woff2"],
           },
         ],
       },
@@ -44,11 +44,7 @@ export default defineConfig({
           {
             display: "swap",
             style: "normal",
-            src: [
-              "./src/assets/fonts/Satoshi-Variable.woff2",
-              "./src/assets/fonts/Satoshi-Variable.woff",
-              "./src/assets/fonts/Satoshi-Variable.ttf",
-            ],
+            src: ["./src/assets/fonts/Satoshi-Variable.woff2"],
           },
         ],
       },
@@ -60,18 +56,12 @@ export default defineConfig({
           {
             display: "swap",
             style: "normal",
-            src: [
-              "./src/assets/fonts/IBMPlexMono-Regular.woff2",
-              "./src/assets/fonts/IBMPlexMono-Regular.woff",
-            ],
+            src: ["./src/assets/fonts/IBMPlexMono-Regular.woff2"],
           },
           {
             display: "swap",
             style: "italic",
-            src: [
-              "./src/assets/fonts/IBMPlexMono-Italic.woff2",
-              "./src/assets/fonts/IBMPlexMono-Italic.woff",
-            ],
+            src: ["./src/assets/fonts/IBMPlexMono-Italic.woff2"],
           },
         ],
       },
