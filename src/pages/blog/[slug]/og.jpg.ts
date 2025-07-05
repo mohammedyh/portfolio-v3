@@ -1,17 +1,11 @@
-import type { APIRoute, GetStaticPaths } from "astro";
-import { getCollection } from "astro:content";
+import type { APIRoute } from "astro";
 import fs from "node:fs/promises";
 import path from "node:path";
 import satori from "satori";
 import sharp from "sharp";
+import { getStaticPaths as getStaticPathsIndex } from "./index.astro";
 
-export const getStaticPaths = (async () => {
-  const posts = await getCollection("blog");
-  return posts.map((post) => ({
-    params: { slug: post.id },
-    props: { post },
-  }));
-}) satisfies GetStaticPaths;
+export const getStaticPaths = getStaticPathsIndex;
 
 export const GET: APIRoute = async ({ props, site }) => {
   const { post } = props;
