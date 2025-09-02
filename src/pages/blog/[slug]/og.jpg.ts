@@ -58,7 +58,7 @@ export const GET: APIRoute = async ({ props, site }) => {
   );
   const jpg = await sharp(Buffer.from(svg)).jpeg({ quality: 100 }).toBuffer();
 
-  return new Response(jpg, {
+  return new Response(jpg as BodyInit, {
     headers: { "Content-Type": "image/jpg" },
   });
 };
