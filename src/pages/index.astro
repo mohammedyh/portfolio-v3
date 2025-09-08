@@ -3,6 +3,7 @@ import Link from "@/components/Link.astro";
 import PostsList from "@/components/PostsList.astro";
 import ProjectsList from "@/components/ProjectsList.astro";
 import Layout from "@/layouts/Layout.astro";
+import links from "@/lib/links";
 ---
 
 <Layout title="Hello, I'm Mohammed 👋🏻">
@@ -30,6 +31,19 @@ import Layout from "@/layouts/Layout.astro";
       I'm reading "Deep Work" by Cal Newport.
     </p>
     <p class="mt-3">🧩 Interesting fact: I can solve the 3x3 Rubiks Cube in under 25 seconds.</p>
+
+    <div class="flex items-center gap-4">
+      {
+        links
+          .filter((link) => !link.disabled)
+          .map((link) => (
+            <Link href={link.href} class="inline-block rounded-md p-2 ring ring-stone-700" external>
+              <div class="sr-only">{link.name}</div>
+              <link.icon />
+            </Link>
+          ))
+      }
+    </div>
   </div>
 
   <ProjectsList limit={3} displaySectionTitle displaySeeAllLink />
