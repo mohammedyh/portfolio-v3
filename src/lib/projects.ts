@@ -14,9 +14,9 @@ const projects: Project[] = [
     link: "https://github.com/mohammedyh/domain-manager",
   },
   {
-    name: "npr - node script runner",
+    name: "npr",
     description:
-      "A CLI tool that lets you browse and run local project scripts using npm, pnpm, yarn, bun or deno",
+      "A small TUI to browse and execute node scripts - supports npm, pnpm, yarn, bun and deno",
     tech: ["Go", "BubbleTea"],
     link: "https://github.com/mohammedyh/npr",
   },
